@@ -1,19 +1,16 @@
-
-// Libs
 import {Meteor} from 'meteor/meteor';
-import {Router} from 'meteor/akryum:vue-router';
-
-// Create router instance
-const router = new Router({
-  history: true,
-  saveScrollPosition: true
-});
+import Vue from 'vue';
+import routerFactory from '/imports/config/route';
 
 // App layout
-import AppLayout from '/imports/ui/AppLayout.vue';
+import App from '/imports/App.vue';
 
 // App start
 Meteor.startup(() => {
   // Start the router
-  router.start(AppLayout, 'app');
+  const router = routerFactory.create();
+  new Vue({
+    router,
+    render: h => h(App),
+  }).$mount('app');
 });
