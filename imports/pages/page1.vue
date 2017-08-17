@@ -5,11 +5,11 @@
 </template>
 <script>
   export default {
-    data() {
-        return {
-            text:'this is page1'
-        }
+    data () {
+      return {
+        text: 'not found'
       }
+    }
 }
 </script>
 <style scoped>

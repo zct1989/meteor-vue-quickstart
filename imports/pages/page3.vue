@@ -7,16 +7,16 @@
 
 <script>
   export default {
-    data() {
-        return {
-            text:'this is page3'
-        }
-      },
-      methods:{
-          te(){
-            this.$router.push('page2')
-          }
+    data () {
+      return {
+        text: 'this is page3'
       }
+    },
+    methods: {
+      te () {
+        this.$router.push('page2')
+      }
+    }
 }
 </script>
 <style scoped>

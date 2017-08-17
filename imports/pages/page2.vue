@@ -6,11 +6,11 @@
 
 <script>
   export default {
-    data() {
-        return {
-            text:'this is page2'
-        }
+    data () {
+      return {
+        text: 'this is page2'
       }
+    }
 }
 </script>
 <style scoped>
