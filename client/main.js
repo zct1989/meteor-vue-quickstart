@@ -33,55 +33,58 @@ import app from '../imports/app'
 
 // fetch('test1').then(console.log)
 // fetch('test2').then(console.log)
-let res = 'expired'
 
-function request (url, auth) {
-  return new Promise((resolve, reject) => {
-    console.log(`${url} request`)
 
-    let ret = res
-    if (url === 'getAuth') {
-      ret = 'token'
-    }
+// --------------
+// let res = 'expired'
 
-    setTimeout(() => {
-      if (ret === 'expired') {
-        reject('expired')
-      } else {
-        resolve(`${url} done`)
-      }
-    }, 2000)
-  })
-}
+// function request (url, auth) {
+//   return new Promise((resolve, reject) => {
+//     console.log(`${url} request`)
 
-let _auth = null
+//     let ret = res
+//     if (url === 'getAuth') {
+//       ret = 'token'
+//     }
 
-function getAuth () {
-  if (_auth == null) {
-    _auth = request('getAuth').then(_ => {
-      return 'token'
-    })
-  }
-  return _auth
-}
+//     setTimeout(() => {
+//       if (ret === 'expired') {
+//         reject('expired')
+//       } else {
+//         resolve(`${url} done`)
+//       }
+//     }, 2000)
+//   })
+// }
 
-function fetch (url) {
-  return getAuth().then(auth => {
-    return request(url, auth).catch(err => {
-      if (err === 'expired') {
-        res = 'success'
-        _auth = null
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            resolve(fetch(url))
-          }, 0)
-        })
-      } else {
-        return Promise.reject(err)
-      }
-    })
-  })
-}
+// let _auth = null
 
-fetch('test1').then(console.log)
-fetch('test2').then(console.log)
+// function getAuth () {
+//   if (_auth == null) {
+//     _auth = request('getAuth').then(_ => {
+//       return 'token'
+//     })
+//   }
+//   return _auth
+// }
+
+// function fetch (url) {
+//   return getAuth().then(auth => {
+//     return request(url, auth).catch(err => {
+//       if (err === 'expired') {
+//         res = 'success'
+//         _auth = null
+//         return new Promise((resolve) => {
+//           setTimeout(() => {
+//             resolve(fetch(url))
+//           }, 0)
+//         })
+//       } else {
+//         return Promise.reject(err)
+//       }
+//     })
+//   })
+// }
+
+// fetch('test1').then(console.log)
+// fetch('test2').then(console.log)
